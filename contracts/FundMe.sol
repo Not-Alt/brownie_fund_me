@@ -24,7 +24,7 @@ contract FundMe {
         //require(getConversionRate(msg.value)>= minumumUSD, "You need to spend more ETH!");
         addressToAmountFunded[msg.sender] += msg.value; //matching the msg sender with the msg.sender and the new value of account
         // what is the eth/usd conversion rate?
-        funders.push(msg.sender); //to see when a funder funds the contract and update when
+        funders.push(msg.sender); //to see when a funder funds the contract and update then
     }
 
     function getVersion() public view returns (uint256) {
@@ -53,7 +53,6 @@ contract FundMe {
         uint256 price = getPrice();
         uint256 precision = 1 * 10**18;
         // return (minimumUSD * precision) / price;
-        // We fixed a rounding error found in the video by adding one!
         return ((minimumUSD * precision) / price) + 1;
     }
 
